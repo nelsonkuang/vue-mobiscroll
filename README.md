@@ -1,4 +1,4 @@
-# vue-scroller
+# vue-scroll
 A light-weight flexible Scroll Picker similiar to Mobiscroll built with Vue.js
 
 Support swipping up / down, mouse dragging up / down are supported too
@@ -6,8 +6,8 @@ Support swipping up / down, mouse dragging up / down are supported too
 ## how to use it?
 
 ```
-git clone https://github.com/nelsonkuang/vue-scroller.git
-cd vue-scroller
+git clone https://github.com/nelsonkuang/vue-scroll.git
+cd vue-scroll
 npm install
 # watch:
 npm run dev
