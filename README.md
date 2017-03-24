@@ -1,7 +1,7 @@
 # vue-mobiscroll
 A light-weight flexible Scroll Picker similiar to Mobiscroll built with Vue.js
 
-Support swipping up / down, mouse dragging up / down are supported too
+Support swipping up / down, mouse dragging up / down , mouse scrolling up / down.
 
 ## how to use it?
 
