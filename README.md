@@ -15,7 +15,11 @@ npm run dev
 npm run build
 ```
 
-then run `npm run dev` and check the page on http://localhost:8080/ 
+then run `npm run dev` and check the page on http://localhost:8080/    
+
+or live demo below:
+
+[One Scroller](http://www.iampua.com/pui/vue-mobiscroll.html)
 
 ## Todo:
 
