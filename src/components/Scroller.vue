@@ -30,7 +30,7 @@ export default {
       lastV: 0,
       startTranslatedY: 80,
       currentTranslatedY: 80,
-      havedClicked: false,
+      haveClicked: false,
       isMouseDown: false,
       totalHeight: 40,
     };
@@ -123,10 +123,10 @@ export default {
             this.selectedIndex = selectedIndex;
             this.itemList[this.selectedIndex].selected = true;
             this.selectedValue = this.itemList[this.selectedIndex].value;
-            this.havedClicked = false;
+            this.haveClicked = false;
           }, t);
         } else {
-          this.havedClicked = true;
+          this.haveClicked = true;
         }
         this.startPosY = 0;
         this.currentPosY = 0;
@@ -165,7 +165,7 @@ export default {
           this.currentTranslatedY = (this.startTranslatedY + this.currentPosY) - this.startPosY;
           this.lastPosY = this.currentPosY;
           this.lastTime = (new Date()).getTime();
-          this.havedClicked = false;
+          this.haveClicked = false;
         }
       };
       mouseUp = () => { // mouse up event
@@ -199,10 +199,10 @@ export default {
             this.selectedIndex = selectedIndex;
             this.itemList[this.selectedIndex].selected = true;
             this.selectedValue = this.itemList[this.selectedIndex].value;
-            this.havedClicked = false;
+            this.haveClicked = false;
           }, t);
         } else {
-          this.havedClicked = true;
+          this.haveClicked = true;
         }
         this.startPosY = 0;
         this.currentPosY = 0;
@@ -260,7 +260,7 @@ export default {
       const el = this.$refs.ul;
       el.querySelectorAll('li').forEach(($li, index) => {
         $li.addEventListener('click', () => {
-          if (this.havedClicked) {
+          if (this.haveClicked) {
             const itemPositionY = $li.offsetTop;
             const currentTranslatedY = 80 - itemPositionY;
             this.transitionDuration = 0;
@@ -269,7 +269,7 @@ export default {
             this.selectedIndex = index;
             this.itemList[this.selectedIndex].selected = true;
             this.selectedValue = this.itemList[this.selectedIndex].value;
-            this.havedClicked = false;
+            this.haveClicked = false;
           }
         });
         return true;
