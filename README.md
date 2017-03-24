@@ -28,3 +28,9 @@ or live demo below:
 Add more examples.
 
 ~~Add scroll triggering options changing.~~
+
+
+v1.0.0 (2017-03-23)
+-------------------
+
+- overwrited [jquery-scroll-cascade-select](https://github.com/hiooyUI/jquery-scroll-cascade-select) with Vue.js
