@@ -1,5 +1,5 @@
 {
-  "name": "vue-scroll",
+  "name": "vue-mobiscroll",
   "version": "1.0.0",
   "description": "A mobiscroll-like Vue Component",
   "author": "NelsonKuang <410374308@qq.com>",
@@ -14,11 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nelsonkuang/vue-scroll.git"
+    "url": "https://github.com/nelsonkuang/vue-mobiscroll.git"
   },  
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nelsonkuang/vue-scroll/issues"
+    "url": "https://github.com/nelsonkuang/vue-mobiscroll/issues"
   },  
   "dependencies": {
     "vue": "^2.2.2"
