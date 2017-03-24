@@ -139,7 +139,6 @@ export default {
     },
     bindMouseEvents() {
       const el = this.$refs.ul;
-      const This = this;
       let mouseDown = null;
       let mouseMove = null;
       let mouseUp = null;
@@ -147,35 +146,35 @@ export default {
       let mouseWheel = null;
 
       mouseDown = (e) => { // mouse down event
-        This.isMouseDown = true;
-        This.startPosY = e.pageY;
-        This.currentPosY = This.startPosY;
-        This.startTime = (new Date()).getTime();
-        This.startTranslatedY = This.currentTranslatedY;
+        this.isMouseDown = true;
+        this.startPosY = e.pageY;
+        this.currentPosY = this.startPosY;
+        this.startTime = (new Date()).getTime();
+        this.startTranslatedY = this.currentTranslatedY;
         el.addEventListener('mousemove', mouseMove);
         el.addEventListener('mouseup', mouseUp);
         el.addEventListener('mouseleave', mouseLeave);
         // console.log('mouseDown!');
       };
       mouseMove = (e) => { // mouse move event
-        if (This.isMouseDown) {
+        if (this.isMouseDown) {
           e.preventDefault(); // prevent default selecting event when mouse moving
-          This.lastV = (e.pageY - This.lastPosY)
-           / ((new Date()).getTime() - This.lastTime);
-          This.currentPosY = e.pageY;
-          This.currentTranslatedY = (This.startTranslatedY + This.currentPosY) - This.startPosY;
-          This.lastPosY = This.currentPosY;
-          This.lastTime = (new Date()).getTime();
-          This.havedClicked = false;
+          this.lastV = (e.pageY - this.lastPosY)
+           / ((new Date()).getTime() - this.lastTime);
+          this.currentPosY = e.pageY;
+          this.currentTranslatedY = (this.startTranslatedY + this.currentPosY) - this.startPosY;
+          this.lastPosY = this.currentPosY;
+          this.lastTime = (new Date()).getTime();
+          this.havedClicked = false;
         }
       };
       mouseUp = () => { // mouse up event
-        This.endTime = (new Date()).getTime();
-        if (Math.abs(This.currentPosY - This.startPosY) > 5 && This.endTime - This.startTime > 20) {
-          const v = This.lastV;
+        this.endTime = (new Date()).getTime();
+        if (Math.abs(this.currentPosY - this.startPosY) > 5 && this.endTime - this.startTime > 20) {
+          const v = this.lastV;
           const s = v > 0 ? (0.5 * (v ** 2)) / 0.001 : (-0.5 * (v ** 2)) / 0.001;
           const t = Math.abs(v) / 0.001;
-          let currentTranslatedY = This.currentTranslatedY;
+          let currentTranslatedY = this.currentTranslatedY;
           currentTranslatedY += s;
           const residue = currentTranslatedY % 40;
           if (Math.abs(residue) >= 20) {
@@ -189,44 +188,44 @@ export default {
           }
           if (currentTranslatedY > 80) {
             currentTranslatedY = 80;
-          } else if (currentTranslatedY < (This.totalHeight - 120) * (-1)) {
-            currentTranslatedY = (This.totalHeight - 120) * (-1);
+          } else if (currentTranslatedY < (this.totalHeight - 120) * (-1)) {
+            currentTranslatedY = (this.totalHeight - 120) * (-1);
           }
           const selectedIndex = Math.abs((currentTranslatedY - 80) / (-40));
-          This.transitionDuration = t;
-          This.currentTranslatedY = currentTranslatedY;
+          this.transitionDuration = t;
+          this.currentTranslatedY = currentTranslatedY;
           setTimeout(() => {
-            This.itemList[This.selectedIndex].selected = false;
-            This.selectedIndex = selectedIndex;
-            This.itemList[This.selectedIndex].selected = true;
-            This.selectedValue = This.itemList[This.selectedIndex].value;
-            This.havedClicked = false;
+            this.itemList[this.selectedIndex].selected = false;
+            this.selectedIndex = selectedIndex;
+            this.itemList[this.selectedIndex].selected = true;
+            this.selectedValue = this.itemList[this.selectedIndex].value;
+            this.havedClicked = false;
           }, t);
         } else {
-          This.havedClicked = true;
+          this.havedClicked = true;
         }
-        This.startPosY = 0;
-        This.currentPosY = 0;
-        This.startTranslatedY = 0;
-        This.startTime = 0;
-        This.endTime = 0;
-        This.lastPosY = 0;
-        This.lastV = 0;
-        This.isMouseDown = false;
+        this.startPosY = 0;
+        this.currentPosY = 0;
+        this.startTranslatedY = 0;
+        this.startTime = 0;
+        this.endTime = 0;
+        this.lastPosY = 0;
+        this.lastV = 0;
+        this.isMouseDown = false;
         el.removeEventListener('mousemove', mouseMove);
         el.removeEventListener('mouseup', mouseUp);
         el.removeEventListener('mouseleave', mouseLeave);
         // console.log('mouseUp!');
       };
       mouseLeave = () => { // mouse leave event
-        if (This.isMouseDown) {
+        if (this.isMouseDown) {
           mouseUp();
           // console.log('mouseLeave!');
         }
       };
       mouseWheel = (e) => { // mouse wheel event
-        This.startTranslatedY = This.currentTranslatedY;
-        let currentTranslatedY = This.startTranslatedY + (e.deltaY * 0.5);
+        this.startTranslatedY = this.currentTranslatedY;
+        let currentTranslatedY = this.startTranslatedY + (e.deltaY * 0.5);
         const residue = currentTranslatedY % 40;
         if (Math.abs(residue) >= 20) {
           if (residue < 0) {
@@ -239,19 +238,19 @@ export default {
         }
         if (currentTranslatedY > 80) {
           currentTranslatedY = 80;
-        } else if (currentTranslatedY < (This.totalHeight - 120) * (-1)) {
-          currentTranslatedY = (This.totalHeight - 120) * (-1);
+        } else if (currentTranslatedY < (this.totalHeight - 120) * (-1)) {
+          currentTranslatedY = (this.totalHeight - 120) * (-1);
         }
-        This.transitionDuration = 0.2;
-        This.currentTranslatedY = currentTranslatedY;
+        this.transitionDuration = 0.2;
+        this.currentTranslatedY = currentTranslatedY;
         const selectedIndex = Math.abs((currentTranslatedY - 80) / (-40));
         setTimeout(() => {
-          This.itemList[This.selectedIndex].selected = false;
-          This.selectedIndex = selectedIndex;
-          This.itemList[This.selectedIndex].selected = true;
-          This.selectedValue = This.itemList[This.selectedIndex].value;
-        }, This.transitionDuration);
-        This.startTranslatedY = 0;
+          this.itemList[this.selectedIndex].selected = false;
+          this.selectedIndex = selectedIndex;
+          this.itemList[this.selectedIndex].selected = true;
+          this.selectedValue = this.itemList[this.selectedIndex].value;
+        }, this.transitionDuration);
+        this.startTranslatedY = 0;
       };
       // bind events
       el.addEventListener('mousedown', mouseDown);
