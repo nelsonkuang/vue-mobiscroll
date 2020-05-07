@@ -19,7 +19,7 @@ then run `npm run dev` and check the page on http://localhost:8080/
 
 or live demo below:
 
-[One Scroller](http://www.iampua.com/pui/vue-mobiscroll.html)
+[One Scroller](http://www.a4z.cn/pui/vue-mobiscroll.html)
 
 ## Todo:
 
